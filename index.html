@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>For Ritija 💍</title>
+<title>Ritija ❤️ Prinsu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
 body{
   margin:0;
   height:100vh;
-  background:radial-gradient(circle at top,#2b0a12,#000000);
+  background:radial-gradient(circle at top,#2b0a12,#000);
   font-family:'Poppins',sans-serif;
   overflow:hidden;
   color:white;
@@ -22,10 +21,10 @@ body{
   position:absolute;
   width:2px;height:2px;
   background:white;
-  opacity:0.7;
+  opacity:.8;
   animation:twinkle 2s infinite alternate;
 }
-@keyframes twinkle{from{opacity:0.2;}to{opacity:1;}}
+@keyframes twinkle{from{opacity:.3;}to{opacity:1;}}
 
 /* SLIDES */
 .slide{
@@ -36,7 +35,7 @@ body{
   justify-content:center;
   opacity:0;
   pointer-events:none;
-  transition:opacity 1.2s ease;
+  transition:1s;
 }
 .slide.active{
   opacity:1;
@@ -45,70 +44,60 @@ body{
 
 /* CARD */
 .card{
-  background:rgba(255,255,255,0.07);
-  backdrop-filter:blur(18px);
-  border-radius:28px;
-  padding:60px 45px;
-  width:90%;
-  max-width:600px;
+  background:rgba(255,255,255,.07);
+  backdrop-filter:blur(20px);
+  border-radius:30px;
+  padding:70px 55px;
+  max-width:750px;
   text-align:center;
-  box-shadow:0 40px 90px rgba(0,0,0,0.8);
+  box-shadow:0 40px 120px rgba(0,0,0,.9);
 }
 
-h1{
-  font-size:2.8em;
-}
+h1{font-size:3em;}
+.big{font-size:1.8em;line-height:2;margin-top:30px;}
+.name{color:#ff4d6d;text-shadow:0 0 25px #ff4d6d;}
 
-.big{
-  font-size:1.6em;
-  line-height:1.9;
-  margin-top:25px;
-}
-
-.name{
-  color:#ff4d6d;
-  text-shadow:0 0 25px #ff4d6d;
-}
-
-/* BUTTONS */
 button{
-  margin-top:35px;
-  padding:18px 55px;
+  margin-top:40px;
+  padding:20px 70px;
   border:none;
-  border-radius:50px;
-  font-size:1.3em;
+  border-radius:60px;
+  font-size:1.4em;
   cursor:pointer;
-  transition:0.3s;
+  transition:.3s;
   position:relative;
 }
+.next{background:#ff4d6d;color:white;}
+.yes{background:#ff4d6d;color:white;margin:30px;}
+.no{background:white;color:#ff4d6d;position:absolute;margin:30px;}
 
-.next{
-  background:#ff4d6d;
-  color:white;
-}
+button:hover{transform:scale(1.1);}
 
-.yes{
-  background:#ff4d6d;
-  color:white;
-  margin:25px;
-  z-index:2;
+/* RING BOX */
+.box{
+  width:160px;height:95px;
+  background:#400000;
+  margin:40px auto;
+  border-radius:12px;
+  transform-origin:bottom;
+  animation:openBox 2s forwards;
 }
-
-.no{
-  background:white;
-  color:#ff4d6d;
-  margin:25px;
-  position:absolute;
+.ring{
+  font-size:4em;
+  opacity:0;
+  animation:showRing 2s 1.5s forwards;
 }
+@keyframes openBox{to{transform:rotateX(-70deg);}}
+@keyframes showRing{to{opacity:1;}}
 
 /* HEART */
 #heart{
-  font-size:7em;
+  font-size:9em;
   animation:beat 1s infinite;
 }
 @keyframes beat{
   0%{transform:scale(1);}
-  25%{transform:scale(1.35);}
+  25%{transform:scale(1.4);}
   50%{transform:scale(1);}
   75%{transform:scale(1.2);}
   100%{transform:scale(1);}
@@ -118,89 +107,102 @@ button{
 .fall{
   position:absolute;
   top:-40px;
-  font-size:28px;
+  font-size:35px;
   animation:fall linear infinite;
 }
 @keyframes fall{
   to{transform:translateY(110vh) rotate(360deg);}
+}
+
+/* CONFETTI */
+.confetti{
+  position:absolute;
+  width:8px;height:8px;
+  animation:confettiFall linear infinite;
+}
+@keyframes confettiFall{
+  to{transform:translateY(110vh) rotate(720deg);}
 }
 </style>
 </head>
 
 <body>
 
-<!-- SLIDE 1 -->
+<!-- Slide 1 -->
 <div class="slide active">
   <div class="card">
-    <h1>Ritija 💖</h1>
+    <h1>Ritija ❤️ Prinsu</h1>
     <p class="big">
-      There are some people who walk into your life quietly…<br><br>
-      And somehow make everything feel softer, warmer, brighter.
+      Today is the day we met.<br><br>
+      And today…<br>
+      we are officially <span class="name">9 months together</span>.
     </p>
     <button class="next" onclick="nextSlide()">Next 💌</button>
   </div>
 </div>
 
-<!-- SLIDE 2 -->
+<!-- Slide 2 -->
 <div class="slide">
   <div class="card">
     <p class="big">
-      You are that person for me, Ritija.<br><br>
-      You make ordinary days feel special.<br>
-      You make simple moments unforgettable.<br><br>
-      And without even trying… you became my favorite person.
+      9 months of laughter.<br>
+      9 months of memories.<br>
+      9 months of growing together.<br><br>
+      And every single day with you<br>
+      has been my favorite.
     </p>
     <button class="next" onclick="nextSlide()">Next 🌹</button>
   </div>
 </div>
 
-<!-- SLIDE 3 -->
+<!-- Slide 3 -->
 <div class="slide">
   <div class="card">
     <p class="big">
-      I don’t promise a perfect life…<br><br>
-      But I promise loyalty.<br>
-      I promise laughter.<br>
-      I promise choosing you — every single day.
+      Ritija…<br><br>
+      You became my peace.<br>
+      My strength.<br>
+      My happiness.<br><br>
+      And I never want a life without you.
     </p>
     <button class="next" onclick="nextSlide()">Next 💍</button>
   </div>
 </div>
 
-<!-- SLIDE 4 PROPOSAL -->
+<!-- Slide 4 Proposal -->
 <div class="slide">
-  <div class="card" id="proposalCard">
-    <h1 class="name">Ritija 💍</h1>
+  <div class="card">
+    <div class="box"></div>
+    <div class="ring">💍</div>
+    <h1 class="name">Ritija</h1>
     <p class="big">
-      From this moment…<br><br>
-      I don’t just want you in my present.<br>
-      I want you in my future.<br><br>
+      If 9 months feel this magical…<br><br>
+      Imagine forever.<br><br>
       Will you be my wife?
     </p>
 
     <button class="yes" id="yesBtn" onclick="yesAnswer()">Yes 💖</button>
     <button class="no" id="noBtn">No 😅</button>
-
-    <div id="response"></div>
   </div>
 </div>
 
-<!-- SLIDE 5 CELEBRATION -->
+<!-- Slide 5 Celebration -->
 <div class="slide">
   <div class="card">
     <div id="heart">❤️</div>
-    <h1 class="name">She Said Yes! 💍</h1>
+    <h1 class="name">Ritija ❤️ Prinsu</h1>
     <p class="big">
-      Ritija…<br><br>
-      You just made me the happiest person alive.<br><br>
-      I love you so much.<br>
-      Today. Tomorrow. Always.
+      She said Yes! 💍<br><br>
+      9 months…<br>
+      And now a lifetime ahead.<br><br>
+      Forever Yours,<br>
+      <span class="name">Prinsu</span>
     </p>
   </div>
 </div>
 
 <audio id="music" loop>
-  <source src="https://cdn.pixabay.com/audio/2023/03/02/audio_0c2c8d2f6c.mp3">
+<source src="https://cdn.pixabay.com/audio/2023/03/02/audio_0c2c8d2f6c.mp3">
 </audio>
 
 <script>
@@ -215,27 +217,25 @@ function nextSlide(){
   slides[current].classList.remove("active");
   current++;
   slides[current].classList.add("active");
-  if(current===1){
-    music.volume=0.4;
-    music.play();
-  }
+  if(current===1){music.volume=0.4;music.play();}
 }
 
-/* NO RUNS AWAY + YES GROWS */
+/* No runs + Yes grows */
 noBtn.addEventListener("mouseover",()=>{
-  const x=Math.random()*400-200;
-  const y=Math.random()*250-125;
+  const x=Math.random()*700-350;
+  const y=Math.random()*350-175;
   noBtn.style.transform=`translate(${x}px,${y}px)`;
-  yesScale+=0.2;
+  yesScale+=0.3;
   yesBtn.style.transform=`scale(${yesScale})`;
 });
 
-/* YES CLICK */
+/* Yes click */
 function yesAnswer(){
   slides[current].classList.remove("active");
   current++;
   slides[current].classList.add("active");
   hearts();
+  confetti();
 }
 
 function hearts(){
@@ -247,11 +247,23 @@ function hearts(){
     h.style.animationDuration=(Math.random()*4+4)+"s";
     document.body.appendChild(h);
     setTimeout(()=>h.remove(),8000);
-  },300);
+  },250);
 }
 
-/* STARS */
-for(let i=0;i<120;i++){
+function confetti(){
+  for(let i=0;i<180;i++){
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+    c.style.animationDuration=(Math.random()*3+2)+"s";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),5000);
+  }
+}
+
+/* Stars */
+for(let i=0;i<200;i++){
   const s=document.createElement("div");
   s.className="star";
   s.style.left=Math.random()*100+"vw";
