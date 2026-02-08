@@ -8,14 +8,12 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box;}
 
 body{
   margin:0;
   min-height:100vh;
-  background:linear-gradient(135deg,#ffffff,#f2f2f2,#e6e6e6);
+  background:linear-gradient(135deg,#ffffff,#f3f3f3,#e8e8e8);
   font-family:'Poppins',sans-serif;
   display:flex;
   justify-content:center;
@@ -23,43 +21,52 @@ body{
   padding:20px;
   overflow:hidden;
   color:#444;
+  animation:glowBg 6s infinite alternate;
+}
+
+@keyframes glowBg{
+  from{background:linear-gradient(135deg,#ffffff,#f3f3f3,#e8e8e8);}
+  to{background:linear-gradient(135deg,#fffafc,#f9f0ff,#f0f7ff);}
 }
 
 /* CARD */
 .card{
   width:100%;
-  max-width:600px;
-  max-height:90vh;
+  max-width:700px;
+  max-height:92vh;
   overflow-y:auto;
-  background:rgba(255,255,255,.95);
-  border-radius:30px;
-  padding:40px 30px;
+  background:rgba(255,255,255,.97);
+  border-radius:35px;
+  padding:50px 35px;
   text-align:center;
-  box-shadow:0 20px 60px rgba(0,0,0,.15);
+  box-shadow:0 25px 80px rgba(0,0,0,.15);
+  position:relative;
+  z-index:2;
 }
 
 h1{
-  font-size:2em;
+  font-size:2.3em;
   color:#6b4f4f;
 }
 
 .big{
-  font-size:1.1em;
-  line-height:1.8;
+  font-size:1.15em;
+  line-height:1.9;
   margin-top:20px;
 }
 
 .name{
   color:#8b5e5e;
   font-weight:700;
+  text-shadow:0 0 8px rgba(0,0,0,.08);
 }
 
 /* BUTTON */
 button{
   margin-top:30px;
-  padding:15px 40px;
+  padding:15px 45px;
   border:none;
-  border-radius:50px;
+  border-radius:60px;
   font-size:1em;
   cursor:pointer;
   background:#8b5e5e;
@@ -68,35 +75,52 @@ button{
 }
 
 button:hover{
-  transform:scale(1.05);
+  transform:scale(1.07);
 }
 
-/* Falling Cookies */
+/* FALLING ITEMS */
 .fall{
   position:fixed;
   top:-40px;
   font-size:24px;
   animation:fall linear infinite;
   pointer-events:none;
+  z-index:1;
 }
 
 @keyframes fall{
   to{transform:translateY(110vh) rotate(360deg);}
 }
 
-/* Heart */
+/* HEART */
 #heart{
-  font-size:4em;
+  font-size:4.5em;
   margin-top:15px;
   animation:beat 1s infinite;
 }
 
 @keyframes beat{
   0%{transform:scale(1);}
-  25%{transform:scale(1.2);}
+  25%{transform:scale(1.25);}
   50%{transform:scale(1);}
-  75%{transform:scale(1.1);}
+  75%{transform:scale(1.15);}
   100%{transform:scale(1);}
+}
+
+/* SPARKLES */
+.spark{
+  position:fixed;
+  width:3px;
+  height:3px;
+  background:#ccc;
+  border-radius:50%;
+  animation:twinkle 2s infinite alternate;
+  z-index:0;
+}
+
+@keyframes twinkle{
+  from{opacity:0.2;}
+  to{opacity:1;}
 }
 </style>
 </head>
@@ -104,31 +128,48 @@ button:hover{
 <body>
 
 <div class="card">
-  <h1>Happy Chocolate Day 🤍🍪</h1>
 
-  <p class="big">
-    Ritija 💖<br><br>
-    Here is your chocolate — your favorite 
-    <span class="name">Hershey’s Cookies & Creme</span> 🤍🍪<br><br>
-    Just like this chocolate, you are soft, sweet,
-    comforting, and completely irresistible.<br><br>
-    You make my days better just by being in them.<br><br>
-    I love you more than all the cookies in the world.
-  </p>
+<h1>Happy Chocolate Day 🤍🍪</h1>
 
-  <button onclick="unwrap()">Unwrap It 🤍</button>
+<p class="big">
+Ritija 💖<br><br>
+Here is your chocolate — your favorite 
+<span class="name">Hershey’s Cookies & Creme</span> 🤍🍪<br><br>
 
-  <div id="surprise"></div>
+But honestly… this is not just chocolate.<br>
+It’s a tiny reminder of how sweet you make my life.<br><br>
+
+You are softer than white chocolate.<br>
+Sweeter than every cookie piece inside it.<br>
+Warmer than the comfort it gives.<br><br>
+
+Every time I see Cookies & Creme, I smile…<br>
+Because it reminds me of you.<br><br>
+
+You make ordinary days feel special.<br>
+You make simple moments feel magical.<br>
+You make my world brighter just by existing.<br><br>
+
+If sweetness had a name…<br>
+It would probably be <span class="name">Ritija</span>.
+</p>
+
+<button onclick="unwrap()">Unwrap Your Sweetness 🤍</button>
+
+<div id="surprise"></div>
+
 </div>
 
 <script>
+
 function unwrap(){
   document.getElementById("surprise").innerHTML =
-  "<div id='heart'>❤️</div><p class='big'><span class='name'>Ritija ❤️ Prinsu</span><br><br>You are my favorite sweetness.<br><br>Now don’t forget to share at least one bite with me 😏🍪</p>";
-  cookieRain();
+  "<div id='heart'>❤️</div><p class='big'><span class='name'>Ritija ❤️ Prinsu</span><br><br>You are my favorite sweetness.<br><br>More comforting than chocolate.<br>More addictive than cookies.<br>More special than any gift.<br><br>I love you so much.<br><br>Now come here… and share that chocolate with me 😏🍪</p>";
+  rainCookies();
+  rainChoco();
 }
 
-function cookieRain(){
+function rainCookies(){
   setInterval(()=>{
     const c=document.createElement('div');
     c.className='fall';
@@ -138,6 +179,28 @@ function cookieRain(){
     document.body.appendChild(c);
     setTimeout(()=>c.remove(),8000);
   },300);
+}
+
+function rainChoco(){
+  setInterval(()=>{
+    const c=document.createElement('div');
+    c.className='fall';
+    c.innerHTML='🍫';
+    c.style.left=Math.random()*100+'vw';
+    c.style.animationDuration=(Math.random()*4+4)+'s';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),8000);
+  },500);
+}
+
+/* SPARKLES */
+for(let i=0;i<60;i++){
+  const s=document.createElement('div');
+  s.className='spark';
+  s.style.left=Math.random()*100+'vw';
+  s.style.top=Math.random()*100+'vh';
+  s.style.animationDuration=(Math.random()*3+1)+'s';
+  document.body.appendChild(s);
 }
 </script>
 
