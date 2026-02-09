@@ -2,9 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Teddy Day Ultimate 🧸</title>
+<title>Teddy Day Complete 🧸</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
@@ -34,7 +33,7 @@ body{
 
 .card{
   width:100%;
-  max-width:650px;
+  max-width:700px;
   max-height:90vh;
   overflow-y:auto;
   background:white;
@@ -45,7 +44,7 @@ body{
 }
 
 h1{font-size:2em;}
-.big{font-size:1.1em;line-height:1.8;margin-top:20px;}
+.big{font-size:1.1em;line-height:1.9;margin-top:20px;}
 .name{color:#d86b9f;font-weight:700;}
 
 button{
@@ -60,7 +59,7 @@ button{
 }
 button:hover{transform:scale(1.1);}
 
-/* 3D Teddy */
+/* Teddy */
 .teddy{
   font-size:6em;
   animation:bounce 2s infinite;
@@ -69,6 +68,14 @@ button:hover{transform:scale(1.1);}
 @keyframes bounce{
   0%,100%{transform:translateY(0) rotateY(0);}
   50%{transform:translateY(-15px) rotateY(15deg);}
+}
+
+/* Hug pulse */
+.hug{animation:hugPulse 1s infinite;}
+@keyframes hugPulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.2);}
+  100%{transform:scale(1);}
 }
 
 /* Walking teddy */
@@ -98,7 +105,6 @@ button:hover{transform:scale(1.1);}
 .confetti{
   position:fixed;
   width:8px;height:8px;
-  background:red;
   animation:fall linear infinite;
 }
 
@@ -117,53 +123,63 @@ button:hover{transform:scale(1.1);}
 
 <body>
 
-<!-- Slide 1 -->
-<div class="slide active">
-  <div class="card">
-    <h1>Happy Teddy Day 🧸</h1>
-    <p class="big">Ritija 💖<br><br>
-    Today is about hugs... and I want to be yours.</p>
-    <button onclick="nextSlide()">Next 🤍</button>
-  </div>
-</div>
+<!-- 1 -->
+<div class="slide active"><div class="card">
+<h1>Happy Teddy Day 🧸</h1>
+<p class="big">
+Ritija 💖<br><br>
+Today is about soft hugs and warm feelings.<br>
+But when I think about warmth… I think about you.
+</p>
+<button onclick="nextSlide()">Next 🤍</button>
+</div></div>
 
-<!-- Slide 2 -->
-<div class="slide">
-  <div class="card">
-    <div class="teddy">🧸</div>
-    <p class="big">Swipe left or tap next 💕</p>
-    <button onclick="nextSlide()">Next</button>
-  </div>
-</div>
+<!-- 2 -->
+<div class="slide"><div class="card">
+<div class="teddy">🧸</div>
+<p class="big">
+This teddy is soft… but not softer than your heart.<br>
+This teddy is cute… but not cuter than your smile.
+</p>
+<button onclick="nextSlide()">Next 💕</button>
+</div></div>
 
-<!-- Slide 3 Typewriter -->
-<div class="slide">
-  <div class="card">
-    <p id="letter" class="big"></p>
-    <button onclick="nextSlide()">Next 💌</button>
-  </div>
-</div>
+<!-- 3 -->
+<div class="slide"><div class="card">
+<p class="big">
+If you ever feel tired, I want to be your rest.<br>
+If you ever feel sad, I want to be your comfort.<br>
+If you ever feel overwhelmed, I want to be the arms that hold you gently.
+</p>
+<button onclick="nextSlide()">Next 💌</button>
+</div></div>
 
-<!-- Slide 4 Hug Question -->
-<div class="slide">
-  <div class="card">
-    <h1>Add Me As Your Hug? 🤗</h1>
-    <button id="yesBtn" onclick="nextSlide()">Yes 💖</button>
-    <button id="noBtn">No 😅</button>
-  </div>
-</div>
+<!-- 4 Hold Hug -->
+<div class="slide"><div class="card">
+<h1>Hold Me To Hug 🤗</h1>
+<div id="hugTeddy" class="teddy">🧸</div>
+<p class="big">Press & hold the teddy.</p>
+</div></div>
 
-<!-- Slide 5 Final -->
-<div class="slide">
-  <div class="card">
-    <div id="bigHeart">❤️</div>
-    <h1 class="name">Ritija ❤️ Prinsu</h1>
-    <p class="big">
-      I promise to always be your hug.<br>
-      Forever 🤍
-    </p>
-  </div>
-</div>
+<!-- 5 Yes/No -->
+<div class="slide"><div class="card">
+<h1>Add Me As Your Hug? 💖</h1>
+<button onclick="nextSlide()">Yes 🤍</button>
+<button id="noBtn">No 😅</button>
+</div></div>
+
+<!-- 6 Final -->
+<div class="slide"><div class="card">
+<div id="bigHeart">❤️</div>
+<h1 class="name">Ritija ❤️ Prinsu</h1>
+<p class="big">
+I promise to always be your hug.<br>
+Your comfort.<br>
+Your warmth.<br><br>
+Happy Teddy Day 🤗💖
+</p>
+<button onclick="replay()">Replay 🔁</button>
+</div></div>
 
 <div class="walk">🧸</div>
 
@@ -175,6 +191,7 @@ button:hover{transform:scale(1.1);}
 const slides=document.querySelectorAll(".slide");
 let current=0;
 const music=document.getElementById("music");
+
 function nextSlide(){
   slides[current].classList.remove("active");
   current++;
@@ -182,26 +199,20 @@ function nextSlide(){
   music.play();
 }
 
-/* Typewriter */
-const msg=`Ritija 💖
-
-You are my comfort.
-My warmth.
-My forever hug.
-
-On this Teddy Day,
-I don't just want to give you a teddy...
-I want to give you me.`;
-let i=0;
-function type(){
-  const el=document.getElementById("letter");
-  if(i<msg.length){
-    el.textContent+=msg.charAt(i);
-    i++;
-    setTimeout(type,30);
-  }
+function replay(){
+  slides[current].classList.remove("active");
+  current=0;
+  slides[current].classList.add("active");
 }
-setTimeout(type,1200);
+
+/* Hold Hug */
+const hugTeddy=document.getElementById("hugTeddy");
+if(hugTeddy){
+hugTeddy.addEventListener("mousedown",()=>hugTeddy.classList.add("hug"));
+hugTeddy.addEventListener("mouseup",()=>{hugTeddy.classList.remove("hug");nextSlide();});
+hugTeddy.addEventListener("touchstart",()=>hugTeddy.classList.add("hug"));
+hugTeddy.addEventListener("touchend",()=>{hugTeddy.classList.remove("hug");nextSlide();});
+}
 
 /* No button runs */
 const noBtn=document.getElementById("noBtn");
@@ -224,9 +235,9 @@ setInterval(()=>{
   setTimeout(()=>h.remove(),8000);
 },400);
 
-/* Confetti on final */
-function confetti(){
-  for(let i=0;i<150;i++){
+/* Confetti final */
+slides[5].addEventListener("transitionend",()=>{
+  for(let i=0;i<120;i++){
     const c=document.createElement("div");
     c.className="confetti";
     c.style.left=Math.random()*100+"vw";
@@ -235,15 +246,6 @@ function confetti(){
     document.body.appendChild(c);
     setTimeout(()=>c.remove(),5000);
   }
-}
-slides[4].addEventListener("transitionend",confetti);
-
-/* Swipe */
-let startX=0;
-document.addEventListener("touchstart",e=>startX=e.touches[0].clientX);
-document.addEventListener("touchend",e=>{
-  let diff=e.changedTouches[0].clientX-startX;
-  if(diff<-50) nextSlide();
 });
 </script>
 
