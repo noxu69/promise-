@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Sleep Well 🌙</title>
+<title>Hug Day 🤗</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -13,7 +13,7 @@
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
   color:#f5f5f5;
   overflow:hidden;
 }
@@ -41,7 +41,7 @@ body{
   max-width:820px;
   max-height:90vh;
   overflow-y:auto;
-  background:rgba(0,0,0,0.6);
+  background:rgba(0,0,0,0.55);
   border-radius:30px;
   padding:55px 50px;
   text-align:center;
@@ -65,7 +65,7 @@ h1{
 }
 
 button{
-  margin-top:35px;
+  margin-top:30px;
   padding:15px 45px;
   border:none;
   border-radius:50px;
@@ -80,31 +80,52 @@ button:hover{
   transform:scale(1.08);
 }
 
-/* Moon */
-#moon{
-  font-size:5em;
-  animation:float 4s ease-in-out infinite;
+/* Hug icon */
+#hug{
+  font-size:5.5em;
+  animation:beat 1.3s infinite;
 }
 
-@keyframes float{
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-10px);}
-  100%{transform:translateY(0);}
+@keyframes beat{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.25);}
+  100%{transform:scale(1);}
 }
 
-/* Stars */
-.star{
+/* Hold animation */
+.hold{
+  animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.3);}
+  100%{transform:scale(1);}
+}
+
+/* Floating hearts */
+.fall{
   position:fixed;
-  width:2px;
-  height:2px;
-  background:white;
-  border-radius:50%;
-  animation:twinkle 2s infinite alternate;
+  top:-40px;
+  font-size:18px;
+  animation:fall linear infinite;
+  opacity:.7;
 }
 
-@keyframes twinkle{
-  from{opacity:.3;}
-  to{opacity:1;}
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg);}
+}
+
+/* Kiss effect */
+.kiss{
+  position:fixed;
+  font-size:2em;
+  animation:floatUp 2s ease forwards;
+}
+
+@keyframes floatUp{
+  from{opacity:1; transform:translateY(0);}
+  to{opacity:0; transform:translateY(-150px);}
 }
 </style>
 </head>
@@ -114,15 +135,14 @@ button:hover{
 <!-- Slide 1 -->
 <div class="slide active">
 <div class="card">
-<div id="moon">🌙</div>
-<h1>Sleep Well 🤍</h1>
+<h1>Happy Hug Day 🤗</h1>
 <p class="big">
 Ritija 💖<br><br>
-It’s time to rest now.<br>
-No more overthinking.<br>
-No more pushing yourself.
+Today isn’t about loud gestures.  
+It’s about soft comfort.  
+The kind of hug that makes everything feel a little calmer.
 </p>
-<button onclick="nextSlide()">Next ✨</button>
+<button onclick="nextSlide()">Next 🤍</button>
 </div>
 </div>
 
@@ -130,64 +150,72 @@ No more pushing yourself.
 <div class="slide">
 <div class="card">
 <p class="big">
-I know today wasn’t the easiest day.  
-Your body feels tired.  
-Your energy feels low.  
-And everything feels heavier than usual.<br><br>
+I know today is not the easiest for you.  
+Your body feels different.  
+Your energy feels lower.  
+And sometimes your emotions feel heavier.<br><br>
 
-So tonight, don’t try to be strong.  
-Don’t try to handle everything.<br><br>
-
-Just rest.
+You don’t need to explain anything.  
+You don’t need to act strong.
 </p>
-<button onclick="nextSlide()">Next 🌙</button>
+<button onclick="nextSlide()">Next 💕</button>
 </div>
 </div>
 
 <!-- Slide 3 -->
 <div class="slide">
 <div class="card">
+<h1>Hold For A Warm Hug 🤗</h1>
+<div id="hug">🤗</div>
 <p class="big">
-Close your eyes slowly.  
-Take a deep breath.  
-Let your body relax.<br><br>
-
-Imagine me sitting beside you quietly.  
-Not talking too much.  
-Just being there.<br><br>
-
-Soft.  
-Calm.  
-Steady.
+Press and hold the hug for a few seconds.
 </p>
-<button onclick="nextSlide()">Almost There 💖</button>
 </div>
 </div>
 
-<!-- Slide 4 Final -->
+<!-- Slide 4 Forehead Kiss -->
 <div class="slide">
 <div class="card">
-<h1 class="name">Good Night, Ritija 🤍</h1>
+<h1 class="name">Forehead Kiss 💋</h1>
 <p class="big">
-May your sleep be peaceful.  
-May your body feel lighter tomorrow.  
-May your heart feel calm.<br><br>
+If I were there,  
+I’d gently hug you…  
+and kiss your forehead softly.<br><br>
 
-Rest well.  
-You are cared for more than you know.
+Just to remind you that  
+you are cared for.
+</p>
+<button onclick="sendKiss()">Tap For Kiss 💖</button>
+<button onclick="nextSlide()">Next ❤️</button>
+</div>
+</div>
+
+<!-- Slide 5 Final -->
+<div class="slide">
+<div class="card">
+<h1 class="name">This Hug Is Always Yours</h1>
+<p class="big">
+Warm.  
+Safe.  
+Patient.  
+Gentle.<br><br>
+
+Happy Hug Day 💖  
+I’m here — especially when you need comfort the most.
 </p>
 <button onclick="replay()">Replay 🔁</button>
 </div>
 </div>
 
 <audio id="music" loop>
-<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_c6f7d5bb6c.mp3">
+<source src="https://cdn.pixabay.com/audio/2023/03/02/audio_0c2c8d2f6c.mp3">
 </audio>
 
 <script>
 const slides=document.querySelectorAll(".slide");
 let current=0;
 const music=document.getElementById("music");
+const hug=document.getElementById("hug");
 
 function nextSlide(){
   slides[current].classList.remove("active");
@@ -202,15 +230,37 @@ function replay(){
   slides[current].classList.add("active");
 }
 
-/* Stars background */
-for(let i=0;i<120;i++){
-  const s=document.createElement("div");
-  s.className="star";
-  s.style.left=Math.random()*100+"vw";
-  s.style.top=Math.random()*100+"vh";
-  s.style.animationDuration=(Math.random()*3+2)+"s";
-  document.body.appendChild(s);
+function sendKiss(){
+  const kiss=document.createElement("div");
+  kiss.className="kiss";
+  kiss.innerHTML="💋";
+  kiss.style.left="50%";
+  kiss.style.top="60%";
+  document.body.appendChild(kiss);
+  if(navigator.vibrate){
+    navigator.vibrate(200);
+  }
+  setTimeout(()=>kiss.remove(),2000);
 }
+
+/* Hold Hug */
+if(hug){
+hug.addEventListener("mousedown",()=>hug.classList.add("hold"));
+hug.addEventListener("mouseup",()=>{hug.classList.remove("hold");nextSlide();});
+hug.addEventListener("touchstart",()=>hug.classList.add("hold"));
+hug.addEventListener("touchend",()=>{hug.classList.remove("hold");nextSlide();});
+}
+
+/* Slow heart rain */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="fall";
+  h.innerHTML="💖";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(Math.random()*6+5)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),10000);
+},800);
 </script>
 
 </body>
